@@ -5,175 +5,201 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Hideki Sato のアプリ</title>
 <meta name="description" content="Mac と iPhone のアプリを個人で作っています。ファイル・写真・動画・音楽・仕事の道具まで、自分で使うものを作っています。">
+<meta name="theme-color" content="#0b0d12">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Hideki Sato のアプリ">
 <meta property="og:description" content="Mac と iPhone のアプリを個人で作っています。ファイル・写真・動画・音楽・仕事の道具まで、自分で使うものを作っています。">
 <meta property="og:url" content="https://emchs07-prog.github.io/">
 <meta name="twitter:card" content="summary">
 <style>
-:root { --bg:#f6f5f2; --fg:#1d1d1f; --mute:#6b6b70; --card:#fff; --line:#e4e2dc; --accent:#2f6fde; }
-@media (prefers-color-scheme: dark) { :root { --bg:#141416; --fg:#f2f2f4; --mute:#a0a0a8; --card:#1e1e22; --line:#2e2e34; --accent:#6aa2ff; } }
+:root { --bg:#fafafa; --fg:#0b0d12; --mute:#5f6470; --card:#ffffff; --line:rgba(15,20,30,.08); --accent:#2563eb; --accent2:#7c3aed; --shadow:0 1px 2px rgba(15,20,30,.04), 0 8px 24px rgba(15,20,30,.06); --shadow-h:0 2px 4px rgba(15,20,30,.06), 0 18px 40px rgba(15,20,30,.12); --nav:rgba(250,250,250,.72); }
+@media (prefers-color-scheme: dark) { :root { --bg:#0b0d12; --fg:#f3f4f6; --mute:#9aa0ab; --card:#15181f; --line:rgba(255,255,255,.08); --accent:#60a5fa; --accent2:#a78bfa; --shadow:0 1px 2px rgba(0,0,0,.3); --shadow-h:0 18px 40px rgba(0,0,0,.5); --nav:rgba(11,13,18,.7); } }
 * { box-sizing:border-box; }
-body { margin:0; background:var(--bg); color:var(--fg); font-family:-apple-system, BlinkMacSystemFont, "Hiragino Sans", "Hiragino Kaku Gothic ProN", sans-serif; line-height:1.7; }
-.wrap { max-width:1080px; margin:0 auto; padding:56px 20px 64px; }
-header h1 { font-size:2rem; margin:0 0 8px; letter-spacing:.02em; }
-header p { color:var(--mute); margin:0 0 6px; max-width:44em; }
-header .links a { color:var(--accent); margin-right:16px; text-decoration:none; }
-section { margin-top:48px; }
-h2 { font-size:1.1rem; color:var(--mute); font-weight:600; margin:0 0 16px; padding-bottom:6px; border-bottom:1px solid var(--line); }
-.grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(300px, 1fr)); gap:20px; }
-.card { background:var(--card); border:1px solid var(--line); border-radius:16px; overflow:hidden; display:flex; flex-direction:column; }
-.shot img { display:block; width:100%; height:auto; }
-.body { padding:16px 18px 18px; display:flex; flex-direction:column; flex:1; }
-.head { display:flex; gap:12px; align-items:center; }
-.icon { border-radius:13px; flex:none; }
-h3 { margin:0; font-size:1.1rem; }
-.plat { margin:0; font-size:.82rem; color:var(--mute); }
-.one { margin:12px 0 14px; font-size:.95rem; flex:1; }
-.btns { margin:0; display:flex; flex-wrap:wrap; gap:8px; }
-.btn { display:inline-block; font-size:.88rem; padding:6px 14px; border-radius:999px; border:1px solid var(--line); color:var(--fg); text-decoration:none; }
-.btn.primary { background:var(--accent); border-color:var(--accent); color:#fff; }
-.btn.soon { color:var(--mute); }
-footer { margin-top:56px; color:var(--mute); font-size:.85rem; }
+html { scroll-behavior:smooth; scroll-padding-top:72px; }
+body { margin:0; background:var(--bg); color:var(--fg); font-family:-apple-system, BlinkMacSystemFont, "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP", sans-serif; line-height:1.7; -webkit-font-smoothing:antialiased; }
+a { color:inherit; }
+.hero { position:relative; overflow:hidden; padding:96px 24px 72px; text-align:center; }
+.hero::before { content:""; position:absolute; inset:-40% -10% auto; height:140%; background:radial-gradient(40% 50% at 30% 40%, color-mix(in srgb, var(--accent) 22%, transparent), transparent 70%), radial-gradient(35% 45% at 72% 35%, color-mix(in srgb, var(--accent2) 20%, transparent), transparent 70%); filter:blur(10px); z-index:-1; }
+.eyebrow { display:inline-block; font-size:.8rem; font-weight:600; letter-spacing:.08em; color:var(--mute); border:1px solid var(--line); border-radius:999px; padding:4px 14px; background:var(--card); }
+.hero h1 { font-size:clamp(2.4rem, 6vw, 4rem); line-height:1.1; letter-spacing:-.02em; margin:20px 0 16px; font-weight:800; }
+.hero h1 span { background:linear-gradient(90deg, var(--accent), var(--accent2)); -webkit-background-clip:text; background-clip:text; color:transparent; }
+.hero p { max-width:34em; margin:0 auto; color:var(--mute); font-size:1.05rem; }
+.rail { display:flex; justify-content:center; flex-wrap:wrap; gap:10px; margin:36px auto 0; max-width:720px; }
+.rail img { border-radius:11px; box-shadow:var(--shadow); }
+.links { margin-top:28px; display:flex; gap:10px; justify-content:center; flex-wrap:wrap; }
+nav { position:sticky; top:0; z-index:10; backdrop-filter:saturate(180%) blur(16px); -webkit-backdrop-filter:saturate(180%) blur(16px); background:var(--nav); border-bottom:1px solid var(--line); }
+nav .in { max-width:1120px; margin:0 auto; padding:10px 24px; display:flex; gap:6px; overflow-x:auto; scrollbar-width:none; }
+nav a { white-space:nowrap; text-decoration:none; font-size:.9rem; color:var(--mute); padding:6px 14px; border-radius:999px; }
+nav a:hover { background:var(--line); color:var(--fg); }
+main { max-width:1120px; margin:0 auto; padding:8px 24px 80px; }
+section { margin-top:56px; }
+.sec-head { display:flex; align-items:center; gap:10px; margin-bottom:20px; }
+h2 { font-size:1.5rem; letter-spacing:-.01em; margin:0; font-weight:700; }
+.count { font-size:.8rem; color:var(--mute); border:1px solid var(--line); border-radius:999px; padding:1px 9px; }
+.grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(min(320px, 100%), 1fr)); gap:24px; }
+.card { background:var(--card); border:1px solid var(--line); border-radius:22px; overflow:hidden; display:flex; flex-direction:column; box-shadow:var(--shadow); transition:transform .25s ease, box-shadow .25s ease; }
+.card:hover { transform:translateY(-4px); box-shadow:var(--shadow-h); }
+.shot { display:block; overflow:hidden; }
+.shot img { display:block; width:100%; height:auto; transition:transform .5s ease; }
+.card:hover .shot img { transform:scale(1.03); }
+.body { padding:18px 20px 20px; display:flex; flex-direction:column; flex:1; }
+.head { display:flex; gap:14px; align-items:center; }
+.icon { border-radius:12px; flex:none; box-shadow:var(--shadow); }
+h3 { margin:0; font-size:1.12rem; letter-spacing:-.01em; }
+.plat { margin:0; font-size:.8rem; color:var(--mute); }
+.one { margin:14px 0 18px; font-size:.93rem; color:var(--mute); flex:1; }
+.btns { display:flex; flex-wrap:wrap; gap:8px; }
+.btn { display:inline-flex; align-items:center; gap:6px; font-size:.86rem; font-weight:600; padding:8px 16px; border-radius:999px; text-decoration:none; border:1px solid var(--line); transition:background .2s, transform .2s; }
+.btn svg { width:15px; height:15px; fill:currentColor; }
+.btn.primary { background:var(--fg); color:var(--bg); border-color:var(--fg); }
+.btn.primary:hover { transform:translateY(-1px); }
+.btn.ghost:hover { background:var(--line); }
+.btn.soon { color:var(--mute); font-weight:500; }
+footer { text-align:center; color:var(--mute); font-size:.85rem; padding:32px 24px 48px; border-top:1px solid var(--line); }
+@media (max-width:600px) { .hero { padding:64px 20px 48px; } .grid { grid-template-columns:1fr; } .rail img { width:36px; height:36px; border-radius:9px; } }
+@media (prefers-reduced-motion: reduce) { * { transition:none !important; scroll-behavior:auto !important; } }
 </style>
 </head>
 <body>
-<div class="wrap">
-  <header>
-    <h1>Hideki Sato のアプリ</h1>
-    <p>Mac と iPhone のアプリを個人で作っています。ファイル・写真・動画・音楽・仕事の道具まで、自分で使うものを作っています。</p>
-    <p class="links"><a href="https://note.com/hideki_sato_apps">作った話（note）</a><a href="https://x.com/hidekisato_apps">X</a></p>
-  </header>
-  <section>
-    <h2>文書とファイル</h2>
+<header class="hero">
+  <span class="eyebrow">Mac・iPhone・iPad のアプリ 13 本</span>
+  <h1><span>Hideki Sato</span> のアプリ</h1>
+  <p>Mac と iPhone のアプリを個人で作っています。ファイル・写真・動画・音楽・仕事の道具まで、自分で使うものを作っています。</p>
+  <div class="rail"><img src="icons/mojiatelier-support.png" alt="" width="44" height="44"><img src="icons/pdfpageworkshop-support.png" alt="" width="44" height="44"><img src="icons/futamado-support.png" alt="" width="44" height="44"><img src="icons/cellstay-support.png" alt="" width="44" height="44"><img src="icons/hikidashimenu-support.png" alt="" width="44" height="44"><img src="icons/photoparcel-support.png" alt="" width="44" height="44"><img src="icons/photoparcel-select-support.png" alt="" width="44" height="44"><img src="icons/chaptan.png" alt="" width="44" height="44"><img src="icons/chaptanbookmark.png" alt="" width="44" height="44"><img src="icons/midiatelier-support.png" alt="" width="44" height="44"><img src="icons/jimudentaku-support.png" alt="" width="44" height="44"><img src="icons/tecola.png" alt="" width="44" height="44"><img src="icons/goodsordermatome-support.png" alt="" width="44" height="44"></div>
+  <div class="links"><a class="btn ghost" href="https://note.com/hideki_sato_apps">作った話を読む（note）</a><a class="btn ghost" href="https://x.com/hidekisato_apps">X でお知らせ</a></div>
+</header>
+<nav><div class="in"><a href="#g0">文書とファイル</a><a href="#g1">写真</a><a href="#g2">動画</a><a href="#g3">音楽</a><a href="#g4">毎日の仕事</a></div></nav>
+<main>
+  <section id="g0">
+    <div class="sec-head"><h2>文書とファイル</h2><span class="count">5</span></div>
     <div class="grid">
-    <article class="card">
-      <a class="shot" href="https://emchs07-prog.github.io/mojiatelier-support/"><img src="https://emchs07-prog.github.io/mojiatelier-support/og.png" alt="文字アトリエの紹介" loading="lazy" width="1200" height="630"></a>
-      <div class="body">
-        <div class="head"><img class="icon" src="icons/mojiatelier-support.png" alt="" width="56" height="56"><div><h3>文字アトリエ</h3><p class="plat">Mac・iPhone・iPad</p></div></div>
-        <p class="one">すぐ起動して、すぐ書けるテキストエディタ。文字コードも改行コードも、開いたときのまま保存します。</p>
-        <p class="btns"><a class="btn primary" href="https://apps.apple.com/jp/app/id6804944538">App Store</a><a class="btn" href="https://emchs07-prog.github.io/mojiatelier-support/">使い方・よくある質問</a></p>
-      </div>
-    </article>
-    <article class="card">
-      <a class="shot" href="https://emchs07-prog.github.io/pdfpageworkshop-support/"><img src="https://emchs07-prog.github.io/pdfpageworkshop-support/og.png" alt="PDF PageRebindの紹介" loading="lazy" width="1200" height="630"></a>
-      <div class="body">
-        <div class="head"><img class="icon" src="icons/pdfpageworkshop-support.png" alt="" width="56" height="56"><div><h3>PDF PageRebind</h3><p class="plat">Mac・iPhone・iPad</p></div></div>
-        <p class="one">PDF の結合・並べ替え・回転・抜き出しを、ページを見ながら。両面スキャンも交互に合わせます。</p>
-        <p class="btns"><a class="btn primary" href="https://apps.apple.com/jp/app/id6812512515">App Store</a><a class="btn" href="https://emchs07-prog.github.io/pdfpageworkshop-support/">使い方・よくある質問</a></p>
-      </div>
-    </article>
-    <article class="card">
-      <a class="shot" href="https://emchs07-prog.github.io/futamado-support/"><img src="https://emchs07-prog.github.io/futamado-support/og.png" alt="Futamadoの紹介" loading="lazy" width="1200" height="630"></a>
-      <div class="body">
-        <div class="head"><img class="icon" src="icons/futamado-support.png" alt="" width="56" height="56"><div><h3>Futamado</h3><p class="plat">Mac・iPhone・iPad</p></div></div>
-        <p class="one">キーボードだけでファイルを整理できる2画面のファイラー。Windows でも文字化けしない ZIP。</p>
-        <p class="btns"><a class="btn primary" href="https://apps.apple.com/jp/app/id6797785485">App Store</a><a class="btn" href="https://emchs07-prog.github.io/futamado-support/">使い方・よくある質問</a></p>
-      </div>
-    </article>
-    <article class="card">
-      <a class="shot" href="https://emchs07-prog.github.io/cellstay-support/"><img src="https://emchs07-prog.github.io/cellstay-support/og.png" alt="CellStayの紹介" loading="lazy" width="1200" height="630"></a>
-      <div class="body">
-        <div class="head"><img class="icon" src="icons/cellstay-support.png" alt="" width="56" height="56"><div><h3>CellStay</h3><p class="plat">Mac</p></div></div>
-        <p class="one">CSV を開いたときの形のまま直せます。先頭の0は消えず、直したセルだけを書き換えて保存。</p>
-        <p class="btns"><span class="btn soon">まもなく公開</span><a class="btn" href="https://emchs07-prog.github.io/cellstay-support/">使い方・よくある質問</a></p>
-      </div>
-    </article>
-    <article class="card">
-      <a class="shot" href="https://emchs07-prog.github.io/hikidashimenu-support/"><img src="https://emchs07-prog.github.io/hikidashimenu-support/og.png" alt="ひきだしメニューの紹介" loading="lazy" width="1200" height="630"></a>
-      <div class="body">
-        <div class="head"><img class="icon" src="icons/hikidashimenu-support.png" alt="" width="56" height="56"><div><h3>ひきだしメニュー</h3><p class="plat">Mac</p></div></div>
-        <p class="one">デスクトップをダブルクリックすると、カーソルの位置によく使うアプリのメニューが開くランチャー。</p>
-        <p class="btns"><span class="btn soon">まもなく公開</span><a class="btn" href="https://emchs07-prog.github.io/hikidashimenu-support/">使い方・よくある質問</a></p>
-      </div>
-    </article>
+      <article class="card">
+        <a class="shot" href="https://emchs07-prog.github.io/mojiatelier-support/" aria-label="文字アトリエの使い方"><img src="https://emchs07-prog.github.io/mojiatelier-support/og.png" alt="文字アトリエの紹介" loading="lazy" width="1200" height="630"></a>
+        <div class="body">
+          <div class="head"><img class="icon" src="icons/mojiatelier-support.png" alt="" width="52" height="52"><div><h3>文字アトリエ</h3><p class="plat">Mac・iPhone・iPad</p></div></div>
+          <p class="one">すぐ起動して、すぐ書けるテキストエディタ。文字コードも改行コードも、開いたときのまま保存します。</p>
+          <div class="btns"><a class="btn primary" href="https://apps.apple.com/jp/app/id6804944538"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.4 12.6c0-2.4 2-3.6 2.1-3.7-1.1-1.7-2.9-1.9-3.5-1.9-1.5-.2-2.9.9-3.7.9-.8 0-1.9-.9-3.2-.8-1.6 0-3.1 1-4 2.4-1.7 3-.4 7.4 1.2 9.8.8 1.2 1.8 2.5 3 2.4 1.2 0 1.7-.8 3.1-.8s1.9.8 3.2.8c1.3 0 2.1-1.2 2.9-2.4.9-1.4 1.3-2.7 1.3-2.8 0 0-2.5-1-2.4-3.9zM14 5.5c.7-.8 1.1-1.9 1-3-1 0-2.1.7-2.8 1.5-.6.7-1.2 1.8-1 2.9 1.1.1 2.1-.6 2.8-1.4z"/></svg>App Store</a><a class="btn ghost" href="https://emchs07-prog.github.io/mojiatelier-support/">使い方を見る<span aria-hidden="true">→</span></a></div>
+        </div>
+      </article>
+      <article class="card">
+        <a class="shot" href="https://emchs07-prog.github.io/pdfpageworkshop-support/" aria-label="PDF PageRebindの使い方"><img src="https://emchs07-prog.github.io/pdfpageworkshop-support/og.png" alt="PDF PageRebindの紹介" loading="lazy" width="1200" height="630"></a>
+        <div class="body">
+          <div class="head"><img class="icon" src="icons/pdfpageworkshop-support.png" alt="" width="52" height="52"><div><h3>PDF PageRebind</h3><p class="plat">Mac・iPhone・iPad</p></div></div>
+          <p class="one">PDF の結合・並べ替え・回転・抜き出しを、ページを見ながら。両面スキャンも交互に合わせます。</p>
+          <div class="btns"><a class="btn primary" href="https://apps.apple.com/jp/app/id6812512515"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.4 12.6c0-2.4 2-3.6 2.1-3.7-1.1-1.7-2.9-1.9-3.5-1.9-1.5-.2-2.9.9-3.7.9-.8 0-1.9-.9-3.2-.8-1.6 0-3.1 1-4 2.4-1.7 3-.4 7.4 1.2 9.8.8 1.2 1.8 2.5 3 2.4 1.2 0 1.7-.8 3.1-.8s1.9.8 3.2.8c1.3 0 2.1-1.2 2.9-2.4.9-1.4 1.3-2.7 1.3-2.8 0 0-2.5-1-2.4-3.9zM14 5.5c.7-.8 1.1-1.9 1-3-1 0-2.1.7-2.8 1.5-.6.7-1.2 1.8-1 2.9 1.1.1 2.1-.6 2.8-1.4z"/></svg>App Store</a><a class="btn ghost" href="https://emchs07-prog.github.io/pdfpageworkshop-support/">使い方を見る<span aria-hidden="true">→</span></a></div>
+        </div>
+      </article>
+      <article class="card">
+        <a class="shot" href="https://emchs07-prog.github.io/futamado-support/" aria-label="Futamadoの使い方"><img src="https://emchs07-prog.github.io/futamado-support/og.png" alt="Futamadoの紹介" loading="lazy" width="1200" height="630"></a>
+        <div class="body">
+          <div class="head"><img class="icon" src="icons/futamado-support.png" alt="" width="52" height="52"><div><h3>Futamado</h3><p class="plat">Mac・iPhone・iPad</p></div></div>
+          <p class="one">キーボードだけでファイルを整理できる2画面のファイラー。Windows でも文字化けしない ZIP。</p>
+          <div class="btns"><a class="btn primary" href="https://apps.apple.com/jp/app/id6797785485"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.4 12.6c0-2.4 2-3.6 2.1-3.7-1.1-1.7-2.9-1.9-3.5-1.9-1.5-.2-2.9.9-3.7.9-.8 0-1.9-.9-3.2-.8-1.6 0-3.1 1-4 2.4-1.7 3-.4 7.4 1.2 9.8.8 1.2 1.8 2.5 3 2.4 1.2 0 1.7-.8 3.1-.8s1.9.8 3.2.8c1.3 0 2.1-1.2 2.9-2.4.9-1.4 1.3-2.7 1.3-2.8 0 0-2.5-1-2.4-3.9zM14 5.5c.7-.8 1.1-1.9 1-3-1 0-2.1.7-2.8 1.5-.6.7-1.2 1.8-1 2.9 1.1.1 2.1-.6 2.8-1.4z"/></svg>App Store</a><a class="btn ghost" href="https://emchs07-prog.github.io/futamado-support/">使い方を見る<span aria-hidden="true">→</span></a></div>
+        </div>
+      </article>
+      <article class="card">
+        <a class="shot" href="https://emchs07-prog.github.io/cellstay-support/" aria-label="CellStayの使い方"><img src="https://emchs07-prog.github.io/cellstay-support/og.png" alt="CellStayの紹介" loading="lazy" width="1200" height="630"></a>
+        <div class="body">
+          <div class="head"><img class="icon" src="icons/cellstay-support.png" alt="" width="52" height="52"><div><h3>CellStay</h3><p class="plat">Mac</p></div></div>
+          <p class="one">CSV を開いたときの形のまま直せます。先頭の0は消えず、直したセルだけを書き換えて保存。</p>
+          <div class="btns"><span class="btn soon">まもなく公開</span><a class="btn ghost" href="https://emchs07-prog.github.io/cellstay-support/">使い方を見る<span aria-hidden="true">→</span></a></div>
+        </div>
+      </article>
+      <article class="card">
+        <a class="shot" href="https://emchs07-prog.github.io/hikidashimenu-support/" aria-label="ひきだしメニューの使い方"><img src="https://emchs07-prog.github.io/hikidashimenu-support/og.png" alt="ひきだしメニューの紹介" loading="lazy" width="1200" height="630"></a>
+        <div class="body">
+          <div class="head"><img class="icon" src="icons/hikidashimenu-support.png" alt="" width="52" height="52"><div><h3>ひきだしメニュー</h3><p class="plat">Mac</p></div></div>
+          <p class="one">デスクトップをダブルクリックすると、カーソルの位置によく使うアプリのメニューが開くランチャー。</p>
+          <div class="btns"><span class="btn soon">まもなく公開</span><a class="btn ghost" href="https://emchs07-prog.github.io/hikidashimenu-support/">使い方を見る<span aria-hidden="true">→</span></a></div>
+        </div>
+      </article>
     </div>
   </section>
-  <section>
-    <h2>写真</h2>
+  <section id="g1">
+    <div class="sec-head"><h2>写真</h2><span class="count">2</span></div>
     <div class="grid">
-    <article class="card">
-      <a class="shot" href="https://emchs07-prog.github.io/photoparcel-support/"><img src="https://emchs07-prog.github.io/photoparcel-support/og.png" alt="PhotoParcelの紹介" loading="lazy" width="1200" height="630"></a>
-      <div class="body">
-        <div class="head"><img class="icon" src="icons/photoparcel-support.png" alt="" width="56" height="56"><div><h3>PhotoParcel</h3><p class="plat">Mac・iPhone・iPad</p></div></div>
-        <p class="one">サムネイルを見ながら、写真をフォルダへサッと振り分け。一括リネームもできます。</p>
-        <p class="btns"><a class="btn primary" href="https://apps.apple.com/jp/app/id6797479444">App Store</a><a class="btn" href="https://emchs07-prog.github.io/photoparcel-support/">使い方・よくある質問</a></p>
-      </div>
-    </article>
-    <article class="card">
-      <a class="shot" href="https://emchs07-prog.github.io/photoparcel-select-support/"><img src="https://emchs07-prog.github.io/photoparcel-select-support/og.png" alt="PhotoParcel Selectの紹介" loading="lazy" width="1200" height="630"></a>
-      <div class="body">
-        <div class="head"><img class="icon" src="icons/photoparcel-select-support.png" alt="" width="56" height="56"><div><h3>PhotoParcel Select</h3><p class="plat">Mac・iPhone・iPad</p></div></div>
-        <p class="one">RAW の写真のセレクトを、キーだけで。付けた星は現像ソフトにそのまま引き継げます。</p>
-        <p class="btns"><a class="btn primary" href="https://apps.apple.com/jp/app/id6800576249">App Store</a><a class="btn" href="https://emchs07-prog.github.io/photoparcel-select-support/">使い方・よくある質問</a></p>
-      </div>
-    </article>
+      <article class="card">
+        <a class="shot" href="https://emchs07-prog.github.io/photoparcel-support/" aria-label="PhotoParcelの使い方"><img src="https://emchs07-prog.github.io/photoparcel-support/og.png" alt="PhotoParcelの紹介" loading="lazy" width="1200" height="630"></a>
+        <div class="body">
+          <div class="head"><img class="icon" src="icons/photoparcel-support.png" alt="" width="52" height="52"><div><h3>PhotoParcel</h3><p class="plat">Mac・iPhone・iPad</p></div></div>
+          <p class="one">サムネイルを見ながら、写真をフォルダへサッと振り分け。一括リネームもできます。</p>
+          <div class="btns"><a class="btn primary" href="https://apps.apple.com/jp/app/id6797479444"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.4 12.6c0-2.4 2-3.6 2.1-3.7-1.1-1.7-2.9-1.9-3.5-1.9-1.5-.2-2.9.9-3.7.9-.8 0-1.9-.9-3.2-.8-1.6 0-3.1 1-4 2.4-1.7 3-.4 7.4 1.2 9.8.8 1.2 1.8 2.5 3 2.4 1.2 0 1.7-.8 3.1-.8s1.9.8 3.2.8c1.3 0 2.1-1.2 2.9-2.4.9-1.4 1.3-2.7 1.3-2.8 0 0-2.5-1-2.4-3.9zM14 5.5c.7-.8 1.1-1.9 1-3-1 0-2.1.7-2.8 1.5-.6.7-1.2 1.8-1 2.9 1.1.1 2.1-.6 2.8-1.4z"/></svg>App Store</a><a class="btn ghost" href="https://emchs07-prog.github.io/photoparcel-support/">使い方を見る<span aria-hidden="true">→</span></a></div>
+        </div>
+      </article>
+      <article class="card">
+        <a class="shot" href="https://emchs07-prog.github.io/photoparcel-select-support/" aria-label="PhotoParcel Selectの使い方"><img src="https://emchs07-prog.github.io/photoparcel-select-support/og.png" alt="PhotoParcel Selectの紹介" loading="lazy" width="1200" height="630"></a>
+        <div class="body">
+          <div class="head"><img class="icon" src="icons/photoparcel-select-support.png" alt="" width="52" height="52"><div><h3>PhotoParcel Select</h3><p class="plat">Mac・iPhone・iPad</p></div></div>
+          <p class="one">RAW の写真のセレクトを、キーだけで。付けた星は現像ソフトにそのまま引き継げます。</p>
+          <div class="btns"><a class="btn primary" href="https://apps.apple.com/jp/app/id6800576249"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.4 12.6c0-2.4 2-3.6 2.1-3.7-1.1-1.7-2.9-1.9-3.5-1.9-1.5-.2-2.9.9-3.7.9-.8 0-1.9-.9-3.2-.8-1.6 0-3.1 1-4 2.4-1.7 3-.4 7.4 1.2 9.8.8 1.2 1.8 2.5 3 2.4 1.2 0 1.7-.8 3.1-.8s1.9.8 3.2.8c1.3 0 2.1-1.2 2.9-2.4.9-1.4 1.3-2.7 1.3-2.8 0 0-2.5-1-2.4-3.9zM14 5.5c.7-.8 1.1-1.9 1-3-1 0-2.1.7-2.8 1.5-.6.7-1.2 1.8-1 2.9 1.1.1 2.1-.6 2.8-1.4z"/></svg>App Store</a><a class="btn ghost" href="https://emchs07-prog.github.io/photoparcel-select-support/">使い方を見る<span aria-hidden="true">→</span></a></div>
+        </div>
+      </article>
     </div>
   </section>
-  <section>
-    <h2>動画</h2>
+  <section id="g2">
+    <div class="sec-head"><h2>動画</h2><span class="count">2</span></div>
     <div class="grid">
-    <article class="card">
-      <a class="shot" href="https://emchs07-prog.github.io/chaptan/"><img src="https://emchs07-prog.github.io/chaptan/og.png" alt="チャプたんの紹介" loading="lazy" width="1200" height="630"></a>
-      <div class="body">
-        <div class="head"><img class="icon" src="icons/chaptan.png" alt="" width="56" height="56"><div><h3>チャプたん</h3><p class="plat">Mac・iPhone・iPad</p></div></div>
-        <p class="one">動画のチャプターを正しく作るための道具。書き方の決まりを確かめて、そのまま貼れる形に。</p>
-        <p class="btns"><a class="btn primary" href="https://apps.apple.com/jp/app/id6797218976">App Store</a><a class="btn" href="https://emchs07-prog.github.io/chaptan/">使い方・よくある質問</a></p>
-      </div>
-    </article>
-    <article class="card">
-      <a class="shot" href="https://emchs07-prog.github.io/chaptanbookmark/"><img src="https://emchs07-prog.github.io/chaptanbookmark/og.png" alt="チャプたんブックマークの紹介" loading="lazy" width="1200" height="630"></a>
-      <div class="body">
-        <div class="head"><img class="icon" src="icons/chaptanbookmark.png" alt="" width="56" height="56"><div><h3>チャプたんブックマーク</h3><p class="plat">Mac・iPhone・iPad</p></div></div>
-        <p class="one">動画をフォルダの中のフォルダで整理。見たい場面にすぐ戻れます。</p>
-        <p class="btns"><a class="btn primary" href="https://apps.apple.com/jp/app/id6810448977">App Store</a><a class="btn" href="https://emchs07-prog.github.io/chaptanbookmark/">使い方・よくある質問</a></p>
-      </div>
-    </article>
+      <article class="card">
+        <a class="shot" href="https://emchs07-prog.github.io/chaptan/" aria-label="チャプたんの使い方"><img src="https://emchs07-prog.github.io/chaptan/og.png" alt="チャプたんの紹介" loading="lazy" width="1200" height="630"></a>
+        <div class="body">
+          <div class="head"><img class="icon" src="icons/chaptan.png" alt="" width="52" height="52"><div><h3>チャプたん</h3><p class="plat">Mac・iPhone・iPad</p></div></div>
+          <p class="one">動画のチャプターを正しく作るための道具。書き方の決まりを確かめて、そのまま貼れる形に。</p>
+          <div class="btns"><a class="btn primary" href="https://apps.apple.com/jp/app/id6797218976"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.4 12.6c0-2.4 2-3.6 2.1-3.7-1.1-1.7-2.9-1.9-3.5-1.9-1.5-.2-2.9.9-3.7.9-.8 0-1.9-.9-3.2-.8-1.6 0-3.1 1-4 2.4-1.7 3-.4 7.4 1.2 9.8.8 1.2 1.8 2.5 3 2.4 1.2 0 1.7-.8 3.1-.8s1.9.8 3.2.8c1.3 0 2.1-1.2 2.9-2.4.9-1.4 1.3-2.7 1.3-2.8 0 0-2.5-1-2.4-3.9zM14 5.5c.7-.8 1.1-1.9 1-3-1 0-2.1.7-2.8 1.5-.6.7-1.2 1.8-1 2.9 1.1.1 2.1-.6 2.8-1.4z"/></svg>App Store</a><a class="btn ghost" href="https://emchs07-prog.github.io/chaptan/">使い方を見る<span aria-hidden="true">→</span></a></div>
+        </div>
+      </article>
+      <article class="card">
+        <a class="shot" href="https://emchs07-prog.github.io/chaptanbookmark/" aria-label="チャプたんブックマークの使い方"><img src="https://emchs07-prog.github.io/chaptanbookmark/og.png" alt="チャプたんブックマークの紹介" loading="lazy" width="1200" height="630"></a>
+        <div class="body">
+          <div class="head"><img class="icon" src="icons/chaptanbookmark.png" alt="" width="52" height="52"><div><h3>チャプたんブックマーク</h3><p class="plat">Mac・iPhone・iPad</p></div></div>
+          <p class="one">動画をフォルダの中のフォルダで整理。見たい場面にすぐ戻れます。</p>
+          <div class="btns"><a class="btn primary" href="https://apps.apple.com/jp/app/id6810448977"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.4 12.6c0-2.4 2-3.6 2.1-3.7-1.1-1.7-2.9-1.9-3.5-1.9-1.5-.2-2.9.9-3.7.9-.8 0-1.9-.9-3.2-.8-1.6 0-3.1 1-4 2.4-1.7 3-.4 7.4 1.2 9.8.8 1.2 1.8 2.5 3 2.4 1.2 0 1.7-.8 3.1-.8s1.9.8 3.2.8c1.3 0 2.1-1.2 2.9-2.4.9-1.4 1.3-2.7 1.3-2.8 0 0-2.5-1-2.4-3.9zM14 5.5c.7-.8 1.1-1.9 1-3-1 0-2.1.7-2.8 1.5-.6.7-1.2 1.8-1 2.9 1.1.1 2.1-.6 2.8-1.4z"/></svg>App Store</a><a class="btn ghost" href="https://emchs07-prog.github.io/chaptanbookmark/">使い方を見る<span aria-hidden="true">→</span></a></div>
+        </div>
+      </article>
     </div>
   </section>
-  <section>
-    <h2>音楽</h2>
+  <section id="g3">
+    <div class="sec-head"><h2>音楽</h2><span class="count">1</span></div>
     <div class="grid">
-    <article class="card">
-      <a class="shot" href="https://emchs07-prog.github.io/midiatelier-support/"><img src="https://emchs07-prog.github.io/midiatelier-support/og.png" alt="MIDIアトリエの紹介" loading="lazy" width="1200" height="630"></a>
-      <div class="body">
-        <div class="head"><img class="icon" src="icons/midiatelier-support.png" alt="" width="56" height="56"><div><h3>MIDIアトリエ</h3><p class="plat">Mac</p></div></div>
-        <p class="one">鍵盤がなくても、パソコンのキーボードで曲を打ち込めます。ピアノロール・譜面・ドラムに対応。</p>
-        <p class="btns"><a class="btn primary" href="https://apps.apple.com/jp/app/id6806438048">App Store</a><a class="btn" href="https://emchs07-prog.github.io/midiatelier-support/">使い方・よくある質問</a></p>
-      </div>
-    </article>
+      <article class="card">
+        <a class="shot" href="https://emchs07-prog.github.io/midiatelier-support/" aria-label="MIDIアトリエの使い方"><img src="https://emchs07-prog.github.io/midiatelier-support/og.png" alt="MIDIアトリエの紹介" loading="lazy" width="1200" height="630"></a>
+        <div class="body">
+          <div class="head"><img class="icon" src="icons/midiatelier-support.png" alt="" width="52" height="52"><div><h3>MIDIアトリエ</h3><p class="plat">Mac</p></div></div>
+          <p class="one">鍵盤がなくても、パソコンのキーボードで曲を打ち込めます。ピアノロール・譜面・ドラムに対応。</p>
+          <div class="btns"><a class="btn primary" href="https://apps.apple.com/jp/app/id6806438048"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.4 12.6c0-2.4 2-3.6 2.1-3.7-1.1-1.7-2.9-1.9-3.5-1.9-1.5-.2-2.9.9-3.7.9-.8 0-1.9-.9-3.2-.8-1.6 0-3.1 1-4 2.4-1.7 3-.4 7.4 1.2 9.8.8 1.2 1.8 2.5 3 2.4 1.2 0 1.7-.8 3.1-.8s1.9.8 3.2.8c1.3 0 2.1-1.2 2.9-2.4.9-1.4 1.3-2.7 1.3-2.8 0 0-2.5-1-2.4-3.9zM14 5.5c.7-.8 1.1-1.9 1-3-1 0-2.1.7-2.8 1.5-.6.7-1.2 1.8-1 2.9 1.1.1 2.1-.6 2.8-1.4z"/></svg>App Store</a><a class="btn ghost" href="https://emchs07-prog.github.io/midiatelier-support/">使い方を見る<span aria-hidden="true">→</span></a></div>
+        </div>
+      </article>
     </div>
   </section>
-  <section>
-    <h2>毎日の仕事</h2>
+  <section id="g4">
+    <div class="sec-head"><h2>毎日の仕事</h2><span class="count">3</span></div>
     <div class="grid">
-    <article class="card">
-      <a class="shot" href="https://emchs07-prog.github.io/jimudentaku-support/"><img src="https://emchs07-prog.github.io/jimudentaku-support/og.png" alt="事務電卓の紹介" loading="lazy" width="1200" height="630"></a>
-      <div class="body">
-        <div class="head"><img class="icon" src="icons/jimudentaku-support.png" alt="" width="56" height="56"><div><h3>事務電卓</h3><p class="plat">iPhone・iPad・Mac</p></div></div>
-        <p class="one">机の上の実務電卓と同じ使い勝手。税込・税抜・GT・メモリー、勤務時間や支払期日の計算も。</p>
-        <p class="btns"><a class="btn primary" href="https://apps.apple.com/jp/app/id6813061061">App Store</a><a class="btn" href="https://emchs07-prog.github.io/jimudentaku-support/">使い方・よくある質問</a></p>
-      </div>
-    </article>
-    <article class="card">
-      <a class="shot" href="https://emchs07-prog.github.io/tecola/"><img src="https://emchs07-prog.github.io/tecola/og.png" alt="Tecolaの紹介" loading="lazy" width="1200" height="630"></a>
-      <div class="body">
-        <div class="head"><img class="icon" src="icons/tecola.png" alt="" width="56" height="56"><div><h3>Tecola</h3><p class="plat">iPhone</p></div></div>
-        <p class="one">システム手帳風の週間カレンダー。1週間を見開きで、手帳のように見渡せます。</p>
-        <p class="btns"><a class="btn primary" href="https://apps.apple.com/jp/app/id6793530289">App Store</a><a class="btn" href="https://emchs07-prog.github.io/tecola/">使い方・よくある質問</a></p>
-      </div>
-    </article>
-    <article class="card">
-      <a class="shot" href="https://emchs07-prog.github.io/goodsordermatome-support/"><img src="https://emchs07-prog.github.io/goodsordermatome-support/og.png" alt="グッズ注文まとめの紹介" loading="lazy" width="1200" height="630"></a>
-      <div class="body">
-        <div class="head"><img class="icon" src="icons/goodsordermatome-support.png" alt="" width="56" height="56"><div><h3>グッズ注文まとめ</h3><p class="plat">Mac・iPhone・iPad</p></div></div>
-        <p class="one">部活のグッズの申込を集計して、配布用・発注用の表と集金表まで作ります。</p>
-        <p class="btns"><a class="btn primary" href="https://apps.apple.com/jp/app/id6809134949">App Store</a><a class="btn" href="https://emchs07-prog.github.io/goodsordermatome-support/">使い方・よくある質問</a></p>
-      </div>
-    </article>
+      <article class="card">
+        <a class="shot" href="https://emchs07-prog.github.io/jimudentaku-support/" aria-label="事務電卓の使い方"><img src="https://emchs07-prog.github.io/jimudentaku-support/og.png" alt="事務電卓の紹介" loading="lazy" width="1200" height="630"></a>
+        <div class="body">
+          <div class="head"><img class="icon" src="icons/jimudentaku-support.png" alt="" width="52" height="52"><div><h3>事務電卓</h3><p class="plat">iPhone・iPad・Mac</p></div></div>
+          <p class="one">机の上の実務電卓と同じ使い勝手。税込・税抜・GT・メモリー、勤務時間や支払期日の計算も。</p>
+          <div class="btns"><a class="btn primary" href="https://apps.apple.com/jp/app/id6813061061"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.4 12.6c0-2.4 2-3.6 2.1-3.7-1.1-1.7-2.9-1.9-3.5-1.9-1.5-.2-2.9.9-3.7.9-.8 0-1.9-.9-3.2-.8-1.6 0-3.1 1-4 2.4-1.7 3-.4 7.4 1.2 9.8.8 1.2 1.8 2.5 3 2.4 1.2 0 1.7-.8 3.1-.8s1.9.8 3.2.8c1.3 0 2.1-1.2 2.9-2.4.9-1.4 1.3-2.7 1.3-2.8 0 0-2.5-1-2.4-3.9zM14 5.5c.7-.8 1.1-1.9 1-3-1 0-2.1.7-2.8 1.5-.6.7-1.2 1.8-1 2.9 1.1.1 2.1-.6 2.8-1.4z"/></svg>App Store</a><a class="btn ghost" href="https://emchs07-prog.github.io/jimudentaku-support/">使い方を見る<span aria-hidden="true">→</span></a></div>
+        </div>
+      </article>
+      <article class="card">
+        <a class="shot" href="https://emchs07-prog.github.io/tecola/" aria-label="Tecolaの使い方"><img src="https://emchs07-prog.github.io/tecola/og.png" alt="Tecolaの紹介" loading="lazy" width="1200" height="630"></a>
+        <div class="body">
+          <div class="head"><img class="icon" src="icons/tecola.png" alt="" width="52" height="52"><div><h3>Tecola</h3><p class="plat">iPhone</p></div></div>
+          <p class="one">システム手帳風の週間カレンダー。1週間を見開きで、手帳のように見渡せます。</p>
+          <div class="btns"><a class="btn primary" href="https://apps.apple.com/jp/app/id6793530289"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.4 12.6c0-2.4 2-3.6 2.1-3.7-1.1-1.7-2.9-1.9-3.5-1.9-1.5-.2-2.9.9-3.7.9-.8 0-1.9-.9-3.2-.8-1.6 0-3.1 1-4 2.4-1.7 3-.4 7.4 1.2 9.8.8 1.2 1.8 2.5 3 2.4 1.2 0 1.7-.8 3.1-.8s1.9.8 3.2.8c1.3 0 2.1-1.2 2.9-2.4.9-1.4 1.3-2.7 1.3-2.8 0 0-2.5-1-2.4-3.9zM14 5.5c.7-.8 1.1-1.9 1-3-1 0-2.1.7-2.8 1.5-.6.7-1.2 1.8-1 2.9 1.1.1 2.1-.6 2.8-1.4z"/></svg>App Store</a><a class="btn ghost" href="https://emchs07-prog.github.io/tecola/">使い方を見る<span aria-hidden="true">→</span></a></div>
+        </div>
+      </article>
+      <article class="card">
+        <a class="shot" href="https://emchs07-prog.github.io/goodsordermatome-support/" aria-label="グッズ注文まとめの使い方"><img src="https://emchs07-prog.github.io/goodsordermatome-support/og.png" alt="グッズ注文まとめの紹介" loading="lazy" width="1200" height="630"></a>
+        <div class="body">
+          <div class="head"><img class="icon" src="icons/goodsordermatome-support.png" alt="" width="52" height="52"><div><h3>グッズ注文まとめ</h3><p class="plat">Mac・iPhone・iPad</p></div></div>
+          <p class="one">部活のグッズの申込を集計して、配布用・発注用の表と集金表まで作ります。</p>
+          <div class="btns"><a class="btn primary" href="https://apps.apple.com/jp/app/id6809134949"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.4 12.6c0-2.4 2-3.6 2.1-3.7-1.1-1.7-2.9-1.9-3.5-1.9-1.5-.2-2.9.9-3.7.9-.8 0-1.9-.9-3.2-.8-1.6 0-3.1 1-4 2.4-1.7 3-.4 7.4 1.2 9.8.8 1.2 1.8 2.5 3 2.4 1.2 0 1.7-.8 3.1-.8s1.9.8 3.2.8c1.3 0 2.1-1.2 2.9-2.4.9-1.4 1.3-2.7 1.3-2.8 0 0-2.5-1-2.4-3.9zM14 5.5c.7-.8 1.1-1.9 1-3-1 0-2.1.7-2.8 1.5-.6.7-1.2 1.8-1 2.9 1.1.1 2.1-.6 2.8-1.4z"/></svg>App Store</a><a class="btn ghost" href="https://emchs07-prog.github.io/goodsordermatome-support/">使い方を見る<span aria-hidden="true">→</span></a></div>
+        </div>
+      </article>
     </div>
   </section>
-  <footer>© 2026 Hideki Sato</footer>
-</div>
+</main>
+<footer>© 2026 Hideki Sato</footer>
 </body>
 </html>
